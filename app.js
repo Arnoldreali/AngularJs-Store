@@ -1,16 +1,7 @@
 (function() {
     var app = angular.module('store', [])
 
-    app.controller("PanelController", function(){
-      this.tab=1
-      
-      this.selectTab = function(setTab){
-        this.tab = setTab
-      }
-      this.isSelected = function(checkTab){
-        return this.tab === checkTab
-      }
-    })
+    
     app.controller("ReviewController", function(){
       this.review = {}
       this.addReview = function(product){
@@ -221,6 +212,33 @@
                 ]
       }
   ] 
+})
+app.directive('product', function(){
+  return{
+    restrict: 'E',
+    templateUrl: 'product.html'
+  }
+})
+app.directive('productPanels', function(){
+  return{
+    restrict: 'E',
+    templateUrl:'product-panels.html',
+    controller:function(){
+      
+    },
+    controllerAs: 'panel'
+  }
+})
+
+app.controller("PanelController", function(){
+  this.tab=1
+  
+  this.selectTab = function(setTab){
+    this.tab = setTab
+  }
+  this.isSelected = function(checkTab){
+    return this.tab === checkTab
+  }
 })
 
       })()

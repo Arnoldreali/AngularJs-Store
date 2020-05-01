@@ -6,23 +6,27 @@
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
       <script type="text/javascript" src="angular.min.js"></script>
       <script type="text/javascript" src="app.js"></script>
+      <script src="./js/directives.js"></script>
     </head>
     <body ng-controller="StoreController as store">
-      <div class="maina">
-          <h1>Tienda de Gemas</h1>
-          <h2>-Angular store-</h2>
-        <section class="section_a" style="max-width:100%;height:auto;">
-          <ul class="list-group">
-            <li class="list-group-item" ng-repeat="product in store.products">
-              <h3 ng-include="'product.html'">
-                {{product.name}}
-                <em class="pull-right">${{product.price}}</em>
-              </h3>
-              <product-panels>
-              </product-panels>
-            </li>
-          </ul>
-        </section>
+      <!---header aplication-->
+      <header>
+        <h1 class="text-center"> Flatlander Craftec Gems</h1>
+        <h2 class="text-center">-- an Angular Store --</h2>
+      </header>
+      <div class="list-group">
+        <!--Header application-->
+        <div class="list-group-item" ng-repeat="product in store.products">
+          <h3>
+            {{product.name}} <em class="pull-right">{{product.price | currency}}</em>
+          </h3>
+          <!--Image gallery-->
+          <product-gallery ng-show="product.images.length">
+          </product-gallery>
+          <products-tabs>
+            
+          </products-tabs>
+        </div>     
       </div>
-    </body> 
+    </body>
   </html>
